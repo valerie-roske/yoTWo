@@ -1,7 +1,9 @@
-package com.thoughtworks.easterEggHunt;
+package com.thoughtworks.easterEggHunt.android.activities;
 
 
 import android.widget.TextView;
+import com.thoughtworks.easterEggHunt.R;
+import com.thoughtworks.easterEggHunt.android.activities.MainActivity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
