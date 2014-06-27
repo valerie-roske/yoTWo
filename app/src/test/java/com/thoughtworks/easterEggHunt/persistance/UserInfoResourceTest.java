@@ -1,7 +1,6 @@
 package com.thoughtworks.easterEggHunt.persistance;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import com.thoughtworks.easterEggHunt.support.UserInfoResourceHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,25 +14,19 @@ import static org.junit.Assert.assertThat;
 @Config(emulateSdk=18)
 @RunWith(RobolectricTestRunner.class)
 public class UserInfoResourceTest {
-
-    public static final String NAME = "name";
-    private Context context;
+    private static final String NAME = "name";
 
     @Before
     public void setUp() throws Exception {
-        context = Robolectric.application;
-        SharedPreferences sharedPreferences = Robolectric.getShadowApplication().getSharedPreferences(UserInfoResource.USER_PREFS, Context.MODE_PRIVATE);
-        sharedPreferences.edit().putString(UserInfoResource.USER_NAME, NAME).commit();
+        UserInfoResourceHelper.writeName(NAME);
     }
 
     @Test
     public void shouldGetResourcesFromSharedPrefs() {
-        UserInfoResource userInfoResource = new UserInfoResource(context);
+        UserInfoResource userInfoResource = new UserInfoResource(Robolectric.application);
 
         String name = userInfoResource.getName();
 
         assertThat(name, is(NAME));
     }
-
-
 }

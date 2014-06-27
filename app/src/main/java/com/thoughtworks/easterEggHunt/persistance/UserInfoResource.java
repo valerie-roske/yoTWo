@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class UserInfoResource {
-    protected static final String USER_PREFS = "USER_PREFS";
-    protected static final String USER_NAME = "name";
+    public static final String USER_PREFS = "USER_PREFS";
+    public static final String USER_NAME = "name";
+
     private final SharedPreferences sharedPreferences;
 
     public UserInfoResource(Context context) {

@@ -1,4 +1,4 @@
-package com.thoughtworks.easterEggHunt;
+package com.thoughtworks.easterEggHunt.api;
 
 import com.thoughtworks.easterEggHunt.domain.User;
 import retrofit.RestAdapter;

@@ -4,6 +4,7 @@ package com.thoughtworks.easterEggHunt.android.activities;
 import android.content.Intent;
 import android.widget.TextView;
 import com.thoughtworks.easterEggHunt.R;
+import com.thoughtworks.easterEggHunt.support.UserInfoResourceHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
@@ -11,6 +12,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 @Config(emulateSdk=18)
@@ -19,7 +21,7 @@ public class MainActivityTest {
 
     @Test
     public void shouldTestRobolectricFramework() {
-        MainActivity mainActivity = Robolectric.buildActivity(MainActivity.class).create().get();
+        MainActivity mainActivity = buildMainActivity();
 
         TextView helloText = (TextView) mainActivity.findViewById(R.id.hello);
 
@@ -28,7 +30,7 @@ public class MainActivityTest {
 
     @Test
     public void shouldGoToRegistrationActivityIfNotRegistered() {
-        Robolectric.buildActivity(MainActivity.class).create().get();
+        buildMainActivity();
 
         Intent nextStartedActivity = Robolectric.getShadowApplication().getNextStartedActivity();
 
@@ -37,11 +39,15 @@ public class MainActivityTest {
 
     @Test
     public void shouldNotGoToRegistrationActivityIfAlreadyRegistered() {
-        Robolectric.buildActivity(MainActivity.class).create().get();
+        UserInfoResourceHelper.writeName("name");
+        buildMainActivity();
 
         Intent nextStartedActivity = Robolectric.getShadowApplication().getNextStartedActivity();
 
-        assertThat(nextStartedActivity.getComponent().getClassName(), is(RegistrationActivity.class.getName()));
+        assertNull(nextStartedActivity);
     }
 
+    private MainActivity buildMainActivity() {
+        return Robolectric.buildActivity(MainActivity.class).create().get();
+    }
 }
