@@ -29,8 +29,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:text="@string/submit"
-            android:textColor="@color/ghostWhite"
-            android:background="@color/darkBlue"
+            style="@style/button"
             android:layout_marginBottom="@dimen/large_margin"/>
 
 
