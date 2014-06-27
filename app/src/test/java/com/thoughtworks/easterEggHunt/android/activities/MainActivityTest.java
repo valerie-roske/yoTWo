@@ -1,9 +1,9 @@
 package com.thoughtworks.easterEggHunt.android.activities;
 
 
+import android.content.Intent;
 import android.widget.TextView;
 import com.thoughtworks.easterEggHunt.R;
-import com.thoughtworks.easterEggHunt.android.activities.MainActivity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
@@ -24,6 +24,24 @@ public class MainActivityTest {
         TextView helloText = (TextView) mainActivity.findViewById(R.id.hello);
 
         assertThat(helloText.getText().toString(), is("Hello world!"));
+    }
+
+    @Test
+    public void shouldGoToRegistrationActivityIfNotRegistered() {
+        Robolectric.buildActivity(MainActivity.class).create().get();
+
+        Intent nextStartedActivity = Robolectric.getShadowApplication().getNextStartedActivity();
+
+        assertThat(nextStartedActivity.getComponent().getClassName(), is(RegistrationActivity.class.getName()));
+    }
+
+    @Test
+    public void shouldNotGoToRegistrationActivityIfAlreadyRegistered() {
+        Robolectric.buildActivity(MainActivity.class).create().get();
+
+        Intent nextStartedActivity = Robolectric.getShadowApplication().getNextStartedActivity();
+
+        assertThat(nextStartedActivity.getComponent().getClassName(), is(RegistrationActivity.class.getName()));
     }
 
 }

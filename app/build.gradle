@@ -50,7 +50,10 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.6.0'
 //    compile 'org.roboguice:roboguice:2.0'
     compile 'com.google.guava:guava:17.0'
+    compile 'com.squareup:dagger:0.9.1'
+    compile 'org.apache.commons:commons-lang3:3.3.2'
 
+    androidTestCompile 'org.mockito:mockito-all:1.9.5'
     androidTestCompile 'junit:junit:4.10'
     androidTestCompile 'org.robolectric:robolectric:2.3+'
     androidTestCompile 'com.squareup:fest-android:1.0.+'
