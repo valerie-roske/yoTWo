@@ -2,6 +2,7 @@ package com.thoughtworks.easterEggHunt.android.activities;
 
 
 import android.content.Intent;
+import com.thoughtworks.easterEggHunt.R;
 import com.thoughtworks.easterEggHunt.support.UserInfoResourceHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +35,20 @@ public class MainActivityTest {
 
         assertNull(nextStartedActivity);
     }
+
+    @Test
+    public void shouldStartListUsersActivityWhenButtonClicked() {
+        UserInfoResourceHelper.writeName("name");
+        MainActivity activity = buildMainActivity();
+        activity.onResume();
+
+        activity.findViewById(R.id.send_message_button).performClick();
+
+        Intent nextStartedActivity = Robolectric.getShadowApplication().getNextStartedActivity();
+
+        assertThat(nextStartedActivity.getComponent().getClassName(), is(ListUsersActivity.class.getName()));
+    }
+
 
     private MainActivity buildMainActivity() {
         return Robolectric.buildActivity(MainActivity.class).create().get();
