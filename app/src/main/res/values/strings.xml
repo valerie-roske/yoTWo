@@ -8,5 +8,6 @@
     <string name="registration">Registration</string>
     <string name="name">Name</string>
     <string name="submit">Submit</string>
+    <string name="list_users">List Users</string>
 
 </resources>

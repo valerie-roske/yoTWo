@@ -1,10 +1,14 @@
 package com.thoughtworks.easterEggHunt.tasks;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import com.thoughtworks.easterEggHunt.api.UserService;
 import com.thoughtworks.easterEggHunt.domain.User;
+import retrofit.RetrofitError;
 
 import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 public class GetAllUsersTask extends AsyncTask<Void, Void, List<User>>{
     private AllUsersCallback allUsersCallback;
@@ -17,7 +21,12 @@ public class GetAllUsersTask extends AsyncTask<Void, Void, List<User>>{
 
     @Override
     protected List<User> doInBackground(Void... voids) {
-        return userService.users();
+        try {
+            return userService.users();
+        } catch (RetrofitError e) {
+            Log.e(GetAllUsersTask.class.getName(), "Could not retrieve users", e);
+        }
+        return newArrayList(new User(1, "Jered"), new User(2, "Jess"));
     }
 
     @Override
