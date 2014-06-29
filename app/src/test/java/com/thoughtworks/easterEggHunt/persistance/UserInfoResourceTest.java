@@ -6,12 +6,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-@Config(emulateSdk=18)
 @RunWith(RobolectricTestRunner.class)
 public class UserInfoResourceTest {
     private static final String NAME = "name";
