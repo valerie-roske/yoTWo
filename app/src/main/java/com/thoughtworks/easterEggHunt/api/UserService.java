@@ -1,5 +1,6 @@
 package com.thoughtworks.easterEggHunt.api;
 
+import com.thoughtworks.easterEggHunt.config.Config;
 import com.thoughtworks.easterEggHunt.domain.User;
 import retrofit.RestAdapter;
 
@@ -10,9 +11,9 @@ public class UserService {
     private final RestAdapter restAdapter;
     private UserClient userClient;
 
-    public UserService() {
+    public UserService(Config config) {
         restAdapter = new RestAdapter.Builder()
-                .setEndpoint("http://easter-egg-hunt-api.herokuapp.com")
+                .setEndpoint(config.valueFor("base_url"))
                 .build();
         userClient = restAdapter.create(UserClient.class);
     }

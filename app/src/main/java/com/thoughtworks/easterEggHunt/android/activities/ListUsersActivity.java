@@ -10,6 +10,8 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import com.thoughtworks.easterEggHunt.R;
 import com.thoughtworks.easterEggHunt.api.UserService;
+import com.thoughtworks.easterEggHunt.config.Config;
+import com.thoughtworks.easterEggHunt.config.Environment;
 import com.thoughtworks.easterEggHunt.domain.User;
 import com.thoughtworks.easterEggHunt.tasks.AllUsersCallback;
 import com.thoughtworks.easterEggHunt.tasks.GetAllUsersTask;
@@ -25,7 +27,8 @@ public class ListUsersActivity extends ListActivity implements AllUsersCallback{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_all_users);
 
-        new GetAllUsersTask(this, new UserService()).execute();
+        Config config = new Config(this, new Environment());
+        new GetAllUsersTask(this, new UserService(config)).execute();
     }
 
     @Override
