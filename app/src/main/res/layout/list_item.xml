@@ -7,6 +7,8 @@
     <TextView android:id="@+id/user"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:textSize="@dimen/LargeText"/>
+              android:textSize="@dimen/LargeText"
+              android:padding="@dimen/small_margin"
+              android:background="@drawable/list_item_shape"/>
 
 </LinearLayout>

@@ -3,14 +3,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@color/navy">
 
     <ListView android:id="@android:id/list"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/skyBlue"
+              android:background="@color/navy"
               android:layout_weight="1"
-              android:drawSelectorOnTop="false"/>
+              android:drawSelectorOnTop="false"
+              android:divider="@color/darkBlue"
+              android:dividerHeight="3px"
+              android:layout_margin="@dimen/small_margin"/>
     <TextView android:id="@android:id/empty"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
