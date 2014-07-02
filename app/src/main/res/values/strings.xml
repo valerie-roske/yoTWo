@@ -9,5 +9,6 @@
     <string name="name">Name</string>
     <string name="submit">Submit</string>
     <string name="list_users">List Users</string>
+    <string name="retrieving_data">Retrieving Data...</string>
 
 </resources>

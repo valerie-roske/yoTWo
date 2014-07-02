@@ -26,7 +26,7 @@ public class GetAllUsersTask extends AsyncTask<Void, Void, List<User>>{
         } catch (RetrofitError e) {
             Log.e(GetAllUsersTask.class.getName(), "Could not retrieve users", e);
         }
-        return newArrayList(new User(1, "Jered"), new User(2, "Jess"));
+        return newArrayList();
     }
 
     @Override
