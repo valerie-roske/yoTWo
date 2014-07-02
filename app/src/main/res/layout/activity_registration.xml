@@ -4,7 +4,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/skyBlue">
+              android:background="@color/mediumBlue">
 
     <TextView
             android:layout_width="wrap_content"
@@ -12,7 +12,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/registration"
             android:id="@+id/textView"
-            android:textSize="70dp"
+            android:textSize="60dp"
+            android:textStyle="bold"
             android:layout_marginTop="@dimen/large_margin"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"/>
@@ -22,8 +23,9 @@
               android:minWidth="150dp"
               android:minLines="1"
               android:gravity="center"
+              android:textSize="@dimen/mediumText"
               android:hint="@string/name"
-              android:background="@color/ghostWhite"/>
+              android:background="@drawable/list_item_shape"/>
     <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

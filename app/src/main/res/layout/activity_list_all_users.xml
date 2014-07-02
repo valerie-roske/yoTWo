@@ -4,22 +4,21 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/navy">
+              android:background="@color/mediumBlue">
 
     <ListView android:id="@android:id/list"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/navy"
               android:layout_weight="1"
               android:drawSelectorOnTop="false"
-              android:divider="@color/darkBlue"
               android:dividerHeight="3px"
               android:layout_margin="@dimen/small_margin"/>
     <TextView android:id="@android:id/empty"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:textStyle="bold"
+              android:textColor="@color/black"
               android:textSize="@dimen/LargeText"
               android:gravity="center"
-              android:background="@color/skyBlue"
               android:text="@string/retrieving_data"/>
 </LinearLayout>

@@ -19,7 +19,7 @@ public class ListUsersActivity extends ListActivity implements AllUsersCallback{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_all_users);
+        setContentView(R.layout.activity_list_all_users);
 
         Config config = new Config(this, new Environment());
         new GetAllUsersTask(this, new UserService(config)).execute();
