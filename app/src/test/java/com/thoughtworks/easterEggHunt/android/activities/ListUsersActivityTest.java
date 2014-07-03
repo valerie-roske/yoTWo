@@ -1,17 +1,21 @@
 package com.thoughtworks.easterEggHunt.android.activities;
 
 import android.widget.ListAdapter;
+import android.widget.TextView;
+import com.thoughtworks.easterEggHunt.R;
 import com.thoughtworks.easterEggHunt.domain.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import retrofit.RetrofitError;
 
 import java.util.ArrayList;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.mock;
 
 @RunWith(RobolectricTestRunner.class)
 public class ListUsersActivityTest {
@@ -23,11 +27,12 @@ public class ListUsersActivityTest {
     public void shouldPopulateListAdapterWithUsers() {
         User expectedUser1 = new User(1, USER_1_NAME);
         User expectedUser2 = new User(2, USER_2_NAME);
+        ArrayList<User> users = newArrayList(expectedUser1, expectedUser2);
 
-        ListUsersActivity activity = setupActivityWithSuccessfulCallback(expectedUser1, expectedUser2);
+        ListUsersActivity activity = getListUsersActivity();
+        activity.success(users);
 
         ListAdapter listAdapter = activity.getListAdapter();
-
         User actualUser1 = (User) listAdapter.getItem(0);
         User actualUser2 = (User) listAdapter.getItem(1);
 
@@ -35,11 +40,18 @@ public class ListUsersActivityTest {
         assertThat(actualUser2, is(expectedUser2));
     }
 
+    @Test
+    public void shouldHaveCorrectMessageOnPageWhenRequestFails() {
+        ListUsersActivity activity = getListUsersActivity();
 
-    private ListUsersActivity setupActivityWithSuccessfulCallback(User expectedUser1, User expectedUser2) {
-        ListUsersActivity activity = Robolectric.buildActivity(ListUsersActivity.class).create().get();
-        ArrayList<User> users = newArrayList(expectedUser1, expectedUser2);
-        activity.callback(users);
-        return activity;
+        activity.failure(mock(RetrofitError.class));
+
+        TextView emptyView = (TextView) activity.getListView().getEmptyView();
+
+        assertThat(emptyView.getText().toString(), is(Robolectric.application.getResources().getString(R.string.could_not_connect_to_server)));
+    }
+
+    private ListUsersActivity getListUsersActivity() {
+        return Robolectric.buildActivity(ListUsersActivity.class).create().get();
     }
 }

@@ -10,5 +10,6 @@
     <string name="submit">Submit</string>
     <string name="list_users">List Users</string>
     <string name="retrieving_data">Retrieving Data...</string>
+    <string name="could_not_connect_to_server">Error connecting to server</string>
 
 </resources>

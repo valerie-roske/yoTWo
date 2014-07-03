@@ -11,7 +11,6 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/registration"
-            android:id="@+id/textView"
             android:textSize="60dp"
             android:textStyle="bold"
             android:layout_marginTop="@dimen/large_margin"
