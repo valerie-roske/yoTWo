@@ -13,7 +13,8 @@ import retrofit.RetrofitError;
 import java.util.ArrayList;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static org.hamcrest.core.Is.is;
+import static org.fest.assertions.api.ANDROID.assertThat;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -47,8 +48,7 @@ public class ListUsersActivityTest {
         activity.failure(mock(RetrofitError.class));
 
         TextView emptyView = (TextView) activity.getListView().getEmptyView();
-
-        assertThat(emptyView.getText().toString(), is(Robolectric.application.getResources().getString(R.string.could_not_connect_to_server)));
+        assertThat(emptyView).hasText(R.string.could_not_connect_to_server);
     }
 
     private ListUsersActivity getListUsersActivity() {

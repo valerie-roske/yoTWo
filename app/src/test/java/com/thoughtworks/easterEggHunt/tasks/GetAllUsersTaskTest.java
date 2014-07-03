@@ -6,26 +6,32 @@ import com.thoughtworks.easterEggHunt.domain.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.robolectric.RobolectricTestRunner;
 import retrofit.RetrofitError;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
+import static org.mockito.MockitoAnnotations.initMocks;
 
 @RunWith(RobolectricTestRunner.class)
 public class GetAllUsersTaskTest {
 
+    @Mock
     private UserService userService;
-    private RequestCallback requestCallback;
+    @Mock
+    private RequestCallback<List<User>> requestCallback;
+
     private GetAllUsersTask task;
 
     @Before
     public void setup() {
-        userService = mock(UserService.class);
-        requestCallback = mock(RequestCallback.class);
+        initMocks(this);
+
         task = new GetAllUsersTask(requestCallback, userService);
     }
 
