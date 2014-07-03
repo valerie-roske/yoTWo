@@ -8,11 +8,10 @@ import java.util.List;
 
 public class UserService {
 
-    private final RestAdapter restAdapter;
     private UserClient userClient;
 
     public UserService(Config config) {
-        restAdapter = new RestAdapter.Builder()
+        RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(config.valueFor("base_url"))
                 .build();
         userClient = restAdapter.create(UserClient.class);

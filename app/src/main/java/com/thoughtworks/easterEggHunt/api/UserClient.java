@@ -8,7 +8,7 @@ import retrofit.http.POST;
 import java.util.List;
 
 public interface UserClient {
-    @GET("/users")
+    @GET("/users.json")
     List<User> users();
 
     @POST("/users")
