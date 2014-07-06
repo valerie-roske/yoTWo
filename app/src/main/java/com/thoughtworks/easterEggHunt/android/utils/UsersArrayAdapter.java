@@ -21,14 +21,13 @@ public class UsersArrayAdapter extends ArrayAdapter<User> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView userTextView;
-        if(convertView == null) {
+        if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
-            userTextView = (TextView) convertView.findViewById(R.id.user);
-        } else {
-            userTextView = (TextView) convertView.findViewById(R.id.user);
         }
 
+        userTextView = (TextView) convertView.findViewById(R.id.user);
         userTextView.setText(getItem(position).getName());
+
         return convertView;
     }
 }

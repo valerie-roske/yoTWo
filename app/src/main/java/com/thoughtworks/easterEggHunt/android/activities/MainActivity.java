@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import com.thoughtworks.easterEggHunt.R;
 import com.thoughtworks.easterEggHunt.persistance.UserInfoResource;
+import org.apache.commons.lang3.StringUtils;
 
 
 public class MainActivity extends Activity {
@@ -20,13 +21,7 @@ public class MainActivity extends Activity {
 
         sendMessagesButton = (Button) findViewById(R.id.send_message_button);
 
-        UserInfoResource userInfoResource = new UserInfoResource(this);
-        String name = userInfoResource.getName();
-
-//        if(StringUtils.isBlank(name)) {
-//            Intent intent = new Intent(this, RegistrationActivity.class);
-//            startActivity(intent);
-//        }
+//        ensureUserIsRegistered();
     }
 
     @Override
@@ -40,5 +35,14 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void ensureUserIsRegistered() {
+        UserInfoResource userInfoResource = new UserInfoResource(this);
+        String name = userInfoResource.getName();
+
+        if (StringUtils.isBlank(name)) {
+            startActivity(new Intent(this, RegistrationActivity.class));
+        }
     }
 }

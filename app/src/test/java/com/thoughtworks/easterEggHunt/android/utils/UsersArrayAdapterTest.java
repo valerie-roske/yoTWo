@@ -17,17 +17,15 @@ import static org.fest.assertions.api.ANDROID.assertThat;
 @RunWith(RobolectricTestRunner.class)
 public class UsersArrayAdapterTest {
 
-    private static final String USER_1_NAME = "Bill";
-
     @Test
     public void shouldRenderNameInListItemView() {
-        List<User> users = newArrayList(new User(1, USER_1_NAME));
+        List<User> users = newArrayList(new User(1, "Bill"));
         UsersArrayAdapter usersArrayAdapter = new UsersArrayAdapter(Robolectric.application, users);
 
         View listItemView = usersArrayAdapter.getView(0, null, null);
         TextView userTextView = (TextView) listItemView.findViewById(R.id.user);
 
-        assertThat(userTextView).hasTextString(USER_1_NAME);
+        assertThat(userTextView).hasTextString("Bill");
     }
 
 }
