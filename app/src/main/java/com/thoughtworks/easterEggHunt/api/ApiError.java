@@ -7,7 +7,11 @@ import java.util.List;
 public class ApiError {
     private List<String> errors;
 
+    public ApiError(List<String> errors) {
+        this.errors = errors;
+    }
+
     public String messages() {
-        return StringUtils.join(errors.toArray(new String[0]), ", ");
+        return StringUtils.join(errors.toArray(new String[errors.size()]), ", ");
     }
 }
