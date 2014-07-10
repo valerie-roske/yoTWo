@@ -10,4 +10,9 @@ public class UserInfoResourceHelper {
         SharedPreferences sharedPreferences = Robolectric.getShadowApplication().getSharedPreferences(UserInfoResource.USER_PREFS, Context.MODE_PRIVATE);
         sharedPreferences.edit().putString(UserInfoResource.USER_NAME, name).commit();
     }
+
+    public static void writeId(Integer id) {
+        SharedPreferences sharedPreferences = Robolectric.getShadowApplication().getSharedPreferences(UserInfoResource.USER_PREFS, Context.MODE_PRIVATE);
+        sharedPreferences.edit().putInt(UserInfoResource.USER_ID, id).commit();
+    }
 }

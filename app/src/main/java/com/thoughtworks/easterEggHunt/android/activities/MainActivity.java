@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import com.thoughtworks.easterEggHunt.R;
+import com.thoughtworks.easterEggHunt.domain.User;
 import com.thoughtworks.easterEggHunt.persistance.UserInfoResource;
-import org.apache.commons.lang3.StringUtils;
 
 
 public class MainActivity extends Activity {
@@ -20,28 +20,26 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         sendMessagesButton = (Button) findViewById(R.id.send_message_button);
-
-//        ensureUserIsRegistered();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
+        ensureUserIsRegistered();
+
         sendMessagesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ListUsersActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(view.getContext(), ListUsersActivity.class));
             }
         });
     }
 
     private void ensureUserIsRegistered() {
-        UserInfoResource userInfoResource = new UserInfoResource(this);
-        String name = userInfoResource.getName();
+        User user = new UserInfoResource(this).getUser();
 
-        if (StringUtils.isBlank(name)) {
+        if (!user.exists()) {
             startActivity(new Intent(this, RegistrationActivity.class));
         }
     }

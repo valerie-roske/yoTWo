@@ -11,6 +11,6 @@ public interface UserClient {
     @GET("/users.json")
     List<User> users();
 
-    @POST("/users")
+    @POST("/users.json")
     User create(@Body User user);
 }

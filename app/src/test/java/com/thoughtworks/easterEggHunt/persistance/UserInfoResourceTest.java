@@ -1,6 +1,6 @@
 package com.thoughtworks.easterEggHunt.persistance;
 
-import com.thoughtworks.easterEggHunt.support.UserInfoResourceHelper;
+import com.thoughtworks.easterEggHunt.domain.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,19 +12,28 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
 public class UserInfoResourceTest {
-    private static final String NAME = "name";
+    private UserInfoResource userInfoResource;
 
     @Before
     public void setUp() throws Exception {
-        UserInfoResourceHelper.writeName(NAME);
+        userInfoResource = new UserInfoResource(Robolectric.application);
     }
 
     @Test
     public void shouldGetResourcesFromSharedPrefs() {
-        UserInfoResource userInfoResource = new UserInfoResource(Robolectric.application);
+        userInfoResource.save(new User(1, "name"));
 
-        String name = userInfoResource.getName();
+        User user = userInfoResource.getUser();
 
-        assertThat(name, is(NAME));
+        assertThat(user.exists(), is(true));
+        assertThat(user.getName(), is("name"));
+        assertThat(user.getId(), is(1));
+    }
+
+    @Test
+    public void shouldGetNoUserWhenTheUserDoesNotExist() {
+        User user = userInfoResource.getUser();
+
+        assertThat(user.exists(), is(false));
     }
 }
