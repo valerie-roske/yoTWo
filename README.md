@@ -1,6 +1,6 @@
-<Name of app>
+# YoTWo
 
-An social app to allow users to send and receive short custom voice messages.
+An social app that allows users to send and receive short custom voice messages.
 
 
 Requirements:
