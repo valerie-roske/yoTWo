@@ -2,7 +2,8 @@ package com.thoughtworks.easterEggHunt.android.activities;
 
 import android.content.Intent;
 import com.thoughtworks.easterEggHunt.R;
-import com.thoughtworks.easterEggHunt.support.UserInfoResourceHelper;
+import com.thoughtworks.easterEggHunt.domain.User;
+import com.thoughtworks.easterEggHunt.persistance.UserInfoResource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
@@ -52,7 +53,7 @@ public class MainActivityTest {
     }
 
     private void userIsRegistered() {
-        UserInfoResourceHelper.writeId(1);
-        UserInfoResourceHelper.writeName("Test name");
+        User user = new User(1, "Test name");
+        new UserInfoResource(Robolectric.application).save(user);
     }
 }
