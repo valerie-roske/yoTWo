@@ -7,6 +7,6 @@ public class Environment {
 
     public EnvironmentValue get() {
         return EnvironmentValue.DEV;
-//        return EnvironmentValue.PROD; --> Switch the comments here to change to production env
+//        return EnvironmentValue.PROD; // --> Switch the comments here to change to production env
     }
 }

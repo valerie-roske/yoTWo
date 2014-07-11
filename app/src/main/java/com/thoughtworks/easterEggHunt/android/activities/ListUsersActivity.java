@@ -30,7 +30,13 @@ public class ListUsersActivity extends ListActivity implements RequestCallback<L
     @Override
     public void success(List<User> users) {
         if(users.isEmpty()) {
-            showEmptyText(R.string.no_users);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    showEmptyText(R.string.no_users);
+                }
+            });
+
             return;
         }
 
@@ -40,7 +46,12 @@ public class ListUsersActivity extends ListActivity implements RequestCallback<L
 
     @Override
     public void failure(RetrofitError error) {
-        showEmptyText(R.string.could_not_connect_to_server);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                showEmptyText(R.string.could_not_connect_to_server);
+            }
+        });
     }
 
     private void showEmptyText(int text) {
