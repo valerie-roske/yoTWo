@@ -29,13 +29,22 @@ public class ListUsersActivity extends ListActivity implements RequestCallback<L
 
     @Override
     public void success(List<User> users) {
+        if(users.isEmpty()) {
+            showEmptyText(R.string.no_users);
+            return;
+        }
+
         ListAdapter listAdapter = new UsersArrayAdapter(this, users);
         setListAdapter(listAdapter);
     }
 
     @Override
     public void failure(RetrofitError error) {
+        showEmptyText(R.string.could_not_connect_to_server);
+    }
+
+    private void showEmptyText(int text) {
         TextView emptyView = (TextView) getListView().getEmptyView();
-        emptyView.setText(R.string.could_not_connect_to_server);
+        emptyView.setText(text);
     }
 }

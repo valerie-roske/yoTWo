@@ -37,7 +37,16 @@ public class ListUsersActivityTest {
     }
 
     @Test
-    public void shouldHaveCorrectMessageOnPageWhenRequestFails() {
+    public void shouldShowEmptyTextWhenThereAreNoUsers() throws Exception {
+        ListUsersActivity activity = createListUsersActivity();
+        activity.success(new ArrayList<User>());
+
+        TextView emptyView = (TextView) activity.getListView().getEmptyView();
+        assertThat(emptyView).hasText(R.string.no_users);
+    }
+
+    @Test
+    public void shouldHaveErrorMessageOnPageWhenRequestFails() {
         ListUsersActivity activity = createListUsersActivity();
         activity.failure(mock(RetrofitError.class));
 
