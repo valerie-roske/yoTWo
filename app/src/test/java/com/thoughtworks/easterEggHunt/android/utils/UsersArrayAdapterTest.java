@@ -1,5 +1,6 @@
 package com.thoughtworks.easterEggHunt.android.utils;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.thoughtworks.easterEggHunt.R;
@@ -20,10 +21,11 @@ public class UsersArrayAdapterTest {
     @Test
     public void shouldRenderNameInListItemView() {
         List<User> users = newArrayList(new User(1, "Bill"));
+        View convertView = LayoutInflater.from(Robolectric.application).inflate(R.layout.list_item, null, false);
         UsersArrayAdapter usersArrayAdapter = new UsersArrayAdapter(Robolectric.application, users);
 
-        View listItemView = usersArrayAdapter.getView(0, null, null);
-        TextView userTextView = (TextView) listItemView.findViewById(R.id.user);
+        View listItemView = usersArrayAdapter.getView(0, convertView, null);
+        TextView userTextView = (TextView) listItemView.findViewById(R.id.user_name);
 
         assertThat(userTextView).hasTextString("Bill");
     }
