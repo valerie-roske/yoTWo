@@ -1,6 +1,7 @@
 package com.thoughtworks.easterEggHunt.android.utils;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,10 @@ public class UsersArrayAdapter extends ArrayAdapter<User> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            convertView = LayoutInflater.from(this.getContext()).inflate(R.layout.list_item, parent, false);
+        }
+
         TextView userTextView = (TextView) convertView.findViewById(R.id.user_name);
         userTextView.setText(getItem(position).getName());
 

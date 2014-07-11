@@ -7,6 +7,7 @@ import org.robolectric.RobolectricTestRunner;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.matchers.JUnitMatchers.containsString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -18,7 +19,7 @@ public class ConfigTest {
 
         Config config = new Config(Robolectric.application, environment);
 
-        assertThat(config.valueFor("base_url"), is("<insert your public IP here>"));
+        assertThat(config.valueFor("base_url"), containsString("<insert your public IP here>"));
     }
 
     @Test
@@ -27,7 +28,7 @@ public class ConfigTest {
 
         Config config = new Config(Robolectric.application, environment);
 
-        assertThat(config.valueFor("base_url"), is("http://easter-egg-hunt-api.herokuapp.com"));
+        assertThat(config.valueFor("base_url"), is("http://yo-two-api.herokuapp.com"));
     }
 
     private Environment buildEnvironmentFor(Environment.EnvironmentValue env) {
