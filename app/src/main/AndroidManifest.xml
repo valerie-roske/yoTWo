@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.thoughtworks.easterEggHunt" >
+    package="com.thoughtworks.yotwo" >
 
     <uses-sdk android:minSdkVersion="18"
               android:targetSdkVersion="19"
@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".android.activities.MainActivity"
+            android:name="com.thoughtworks.yotwo.android.activities.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".android.activities.RegistrationActivity"
+        <activity android:name="com.thoughtworks.yotwo.android.activities.RegistrationActivity"
                 android:label="@string/registration" >
         </activity>
-        <activity android:name=".android.activities.ListUsersActivity"
+        <activity android:name="com.thoughtworks.yotwo.android.activities.ListUsersActivity"
                 android:label="@string/list_users" >
         </activity>
     </application>
