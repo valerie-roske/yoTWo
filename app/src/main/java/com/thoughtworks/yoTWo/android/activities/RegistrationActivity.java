@@ -57,7 +57,12 @@ public class RegistrationActivity extends Activity implements RequestCallback<Us
             public void run() {
                 ApiError apiError = (ApiError) error.getBodyAs(ApiError.class);
 
-                registrationErrorText.setText(apiError.messages());
+                if(apiError == null) {
+                    registrationErrorText.setText(R.string.could_not_connect_to_server);
+                }
+                else {
+                    registrationErrorText.setText(apiError.messages());
+                }
                 registrationErrorText.setVisibility(View.VISIBLE);
             }
         });
