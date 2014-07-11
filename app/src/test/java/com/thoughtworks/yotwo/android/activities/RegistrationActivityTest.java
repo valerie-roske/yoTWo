@@ -28,8 +28,6 @@ public class RegistrationActivityTest {
 
         RegistrationActivity activity = resumeRegistrationActivity();
 
-        Intent nextStartedActivity = Robolectric.getShadowApplication().getNextStartedActivity();
-        assertThat(nextStartedActivity).isEqualTo(intentFor(MainActivity.class));
         assertThat(activity).isFinishing();
     }
 
@@ -50,8 +48,7 @@ public class RegistrationActivityTest {
 
         activity.success(new User(1, "name"));
 
-        Intent nextStartedActivity = Robolectric.getShadowApplication().getNextStartedActivity();
-        assertThat(nextStartedActivity).isEqualTo(intentFor(MainActivity.class));
+        assertThat(activity).isFinishing();
     }
 
     @Test

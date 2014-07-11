@@ -1,7 +1,6 @@
 package com.thoughtworks.yotwo.android.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -46,8 +45,7 @@ public class RegistrationActivity extends Activity implements RequestCallback<Us
     @Override
     public void success(User user) {
         new UserInfoResource(this).save(user);
-
-        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     @Override
@@ -71,7 +69,6 @@ public class RegistrationActivity extends Activity implements RequestCallback<Us
     private void ensureUserIsNotRegistered() {
         User user = new UserInfoResource(this).getUser();
         if (user.exists()) {
-            startActivity(new Intent(this, MainActivity.class));
             finish();
         }
     }
