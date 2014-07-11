@@ -28,20 +28,19 @@ public class ListUsersActivity extends ListActivity implements RequestCallback<L
     }
 
     @Override
-    public void success(List<User> users) {
-        if(users.isEmpty()) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
+    public void success(final List<User> users) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (users.isEmpty()) {
                     showEmptyText(R.string.no_users);
+                    return;
                 }
-            });
 
-            return;
-        }
-
-        ListAdapter listAdapter = new UsersArrayAdapter(this, users);
-        setListAdapter(listAdapter);
+                ListAdapter listAdapter = new UsersArrayAdapter(ListUsersActivity.this, users);
+                setListAdapter(listAdapter);
+            }
+        });
     }
 
     @Override
