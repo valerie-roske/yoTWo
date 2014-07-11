@@ -31,7 +31,7 @@ public class Config {
 
     private void loadYamlFor(Environment environment) {
         Resources resources = context.getResources();
-        int configResourceId = resources.getIdentifier(configFilenameFor(environment), "raw", "com.thoughtworks.easterEggHunt");
+        int configResourceId = resources.getIdentifier(configFilenameFor(environment), "raw", context.getPackageName());
 
         InputStream rawConfig = resources.openRawResource(configResourceId);
         values = ((Map) new Yaml().load(rawConfig));
