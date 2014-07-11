@@ -38,6 +38,8 @@ public class RegistrationActivity extends Activity implements RequestCallback<Us
     protected void onResume() {
         super.onResume();
 
+        ensureUserIsNotRegistered();
+
         registerButton.setOnClickListener(new RegisterUserClickListener(this));
     }
 
@@ -59,6 +61,14 @@ public class RegistrationActivity extends Activity implements RequestCallback<Us
                 registrationErrorText.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    private void ensureUserIsNotRegistered() {
+        User user = new UserInfoResource(this).getUser();
+        if (user.exists()) {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
     }
 
     private class RegisterUserClickListener implements View.OnClickListener {

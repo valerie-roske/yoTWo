@@ -21,9 +21,21 @@ import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
 public class RegistrationActivityTest {
+
+    @Test
+    public void shouldStartTheMainActivityIfTheUserIsAlreadyRegistered() throws Exception {
+        userIsRegistered();
+
+        RegistrationActivity activity = resumeRegistrationActivity();
+
+        Intent nextStartedActivity = Robolectric.getShadowApplication().getNextStartedActivity();
+        assertThat(nextStartedActivity).isEqualTo(intentFor(MainActivity.class));
+        assertThat(activity).isFinishing();
+    }
+
     @Test
     public void shouldSaveTheUserToSharedPrefsWhenRegistrationIsSuccessful() throws Exception {
-        RegistrationActivity activity = createRegistrationActivity();
+        RegistrationActivity activity = resumeRegistrationActivity();
 
         activity.success(new User(1, "name"));
 
@@ -34,7 +46,7 @@ public class RegistrationActivityTest {
 
     @Test
     public void shouldStartTheMainActivityWhenRegistrationIsSuccessful() throws Exception {
-        RegistrationActivity activity = createRegistrationActivity();
+        RegistrationActivity activity = resumeRegistrationActivity();
 
         activity.success(new User(1, "name"));
 
@@ -44,7 +56,7 @@ public class RegistrationActivityTest {
 
     @Test
     public void shouldShowAnErrorWhenRegistrationIsUnsuccessful() throws Exception {
-        RegistrationActivity activity = createRegistrationActivity();
+        RegistrationActivity activity = resumeRegistrationActivity();
 
         activity.failure(error("User not valid"));
 
@@ -60,11 +72,16 @@ public class RegistrationActivityTest {
         return error;
     }
 
-    private RegistrationActivity createRegistrationActivity() {
-        return Robolectric.buildActivity(RegistrationActivity.class).create().get();
+    private RegistrationActivity resumeRegistrationActivity() {
+        return Robolectric.buildActivity(RegistrationActivity.class).create().resume().get();
     }
 
     private Intent intentFor(Class nextStartedActivity) {
         return new Intent(Robolectric.application, nextStartedActivity);
+    }
+
+    private void userIsRegistered() {
+        User user = new User(1, "Test name");
+        new UserInfoResource(Robolectric.application).save(user);
     }
 }
