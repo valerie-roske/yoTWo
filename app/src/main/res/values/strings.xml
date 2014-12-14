@@ -12,5 +12,7 @@
     <string name="retrieving_data">Retrieving Data…</string>
     <string name="could_not_connect_to_server">Error connecting to server</string>
     <string name="no_users">Sorry! There are no users in the system yet!</string>
+    <string name="title_activity_record">RecordActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

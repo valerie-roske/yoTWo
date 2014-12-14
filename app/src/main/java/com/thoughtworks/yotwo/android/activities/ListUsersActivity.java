@@ -18,6 +18,8 @@ import java.util.List;
 
 public class ListUsersActivity extends ListActivity implements RequestCallback<List<User>> {
 
+    private List list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,7 @@ public class ListUsersActivity extends ListActivity implements RequestCallback<L
 
         Config config = new Config(this, new Environment());
         new GetAllUsersTask(this, new UserService(config)).execute();
+
     }
 
     @Override

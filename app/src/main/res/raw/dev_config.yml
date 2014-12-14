@@ -1,4 +1,4 @@
-base_url: http://<insert your public IP here>:3000
-aws_access_key_id: <insert your aws access key here>
-aws_secret_key: <insert your secret aws key here>
+base_url: http://10.101.3.54:3000
+aws_access_key_id: AKIAIP44YFQYTOUKQDQQ
+aws_secret_key: XA4GD6kGq3RrD/MaIkVirTZuOz6WgLxj3qq7sbJW
 aws_s3_bucket_name: jphilipp-tw-app

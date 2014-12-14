@@ -2,9 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.thoughtworks.yotwo" >
 
-    <uses-sdk android:minSdkVersion="18"
-              android:targetSdkVersion="19"
-              android:maxSdkVersion="19" />
+    <uses-sdk
+        android:maxSdkVersion="19"
+        android:minSdkVersion="18"
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -22,11 +23,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.thoughtworks.yotwo.android.activities.RegistrationActivity"
-                android:label="@string/registration" >
+        <activity
+            android:name="com.thoughtworks.yotwo.android.activities.RegistrationActivity"
+            android:label="@string/registration" >
         </activity>
-        <activity android:name="com.thoughtworks.yotwo.android.activities.ListUsersActivity"
-                android:label="@string/list_users" >
+        <activity
+            android:name="com.thoughtworks.yotwo.android.activities.ListUsersActivity"
+            android:label="@string/list_users" >
+        </activity>
+        <activity
+            android:name="com.thoughtworks.yotwo.android.activities.RecordActivity"
+            android:label="@string/title_activity_record" >
         </activity>
     </application>
 
