@@ -1,0 +1,3 @@
+[submodule "yo-two-api"]
+	path = yo-two-api
+	url = https://github.com/ryanoglesby08/yo-two-api
